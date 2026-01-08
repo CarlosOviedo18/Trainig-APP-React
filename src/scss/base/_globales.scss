@@ -1,0 +1,138 @@
+/* =====================
+   ESTILOS GLOBALES
+   ===================== */
+
+// Contenedor Principal
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-md;
+
+    @include mobile-lg {
+        padding: $spacing-sm;
+    }
+}
+
+// =====================
+// BOTONES GLOBALES
+// =====================
+
+.btn {
+    @include btn-base;
+
+    // Botón Primario (Azul)
+    &.btn-primary {
+        @include btn-color($btn-primary-bg, $btn-primary-hover, $btn-primary-text);
+    }
+
+    // Botón Éxito (Verde)
+    &.btn-success {
+        @include btn-color($btn-success-bg, $btn-success-hover, $btn-success-text);
+    }
+
+    // Botón Peligro (Rojo)
+    &.btn-danger {
+        @include btn-color($btn-danger-bg, $btn-danger-hover, $btn-danger-text);
+    }
+
+    // Botón Secundario (Gris)
+    &.btn-secondary {
+        @include btn-color($btn-secondary-bg, $btn-secondary-hover, $btn-secondary-text);
+    }
+
+    // Botón Editar (Naranja)
+    &.btn-edit {
+        @include btn-color($btn-edit-bg, $btn-edit-hover, $btn-edit-text);
+    }
+}
+
+// =====================
+// FORMULARIOS
+// =====================
+
+input, textarea, select {
+    font-family: $font-family;
+    font-size: $font-size-base;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    transition: border-color $transition-fast;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+        border-color: $btn-primary-bg;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+}
+
+label {
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-sm;
+    display: block;
+}
+
+// =====================
+// TIPOGRAFÍA
+// =====================
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+}
+
+h1 {
+    font-size: $font-size-2xl;
+}
+
+h2 {
+    font-size: $font-size-xl;
+}
+
+h3 {
+    font-size: $font-size-lg;
+}
+
+p {
+    margin-bottom: $spacing-md;
+}
+
+// =====================
+// UTILIDADES
+// =====================
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.mt-sm {
+    margin-top: $spacing-sm;
+}
+
+.mt-md {
+    margin-top: $spacing-md;
+}
+
+.mt-lg {
+    margin-top: $spacing-lg;
+}
+
+.mb-sm {
+    margin-bottom: $spacing-sm;
+}
+
+.mb-md {
+    margin-bottom: $spacing-md;
+}
+
+.mb-lg {
+    margin-bottom: $spacing-lg;
+}

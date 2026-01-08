@@ -1,0 +1,117 @@
+@import '../base/variables';
+@import '../base/mixins';
+
+.form-exercise {
+  padding: $spacing-lg;
+  background-color: #f9f9f9;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  max-width: 600px;
+  margin: $spacing-lg auto;
+
+  @include mobile-lg {
+    padding: $spacing-md;
+    margin: $spacing-md;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+
+    @include mobile-lg {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__field {
+    margin-bottom: $spacing-md;
+
+    .MuiTextField-root {
+      width: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $spacing-md;
+    margin-top: $spacing-lg;
+    justify-content: center;
+
+    @include mobile-lg {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    flex: 1;
+    padding: 12px 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: $radius-sm;
+    transition: all 0.3s ease;
+
+    @include mobile-lg {
+      width: 100%;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &__exercises-list {
+    margin-top: $spacing-lg;
+    padding-top: $spacing-lg;
+    border-top: 2px solid $color-border;
+  }
+
+  &__exercise-item {
+    background-color: #ffffff;
+    padding: $spacing-md;
+    border-radius: $radius-sm;
+    margin-bottom: $spacing-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid $btn-primary-bg;
+
+    @include mobile-lg {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-md;
+    }
+  }
+
+  &__exercise-info {
+    flex: 1;
+
+    h4 {
+      margin: 0 0 $spacing-xs 0;
+      color: $color-text-primary;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      color: $color-text-secondary;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__exercise-actions {
+    display: flex;
+    gap: $spacing-sm;
+
+    @include mobile-lg {
+      width: 100%;
+
+      button {
+        flex: 1;
+      }
+    }
+  }
+}

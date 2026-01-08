@@ -1,0 +1,8 @@
+// Importar en orden
+@import './variables';
+@import './mixins';
+@import './normalize';
+@import './globales';
+
+// Layouts
+@import '../layout/FormExercise';
