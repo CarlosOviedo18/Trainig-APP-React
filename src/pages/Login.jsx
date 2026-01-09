@@ -1,10 +1,15 @@
-import React from 'react'
+import LoginForm from "../components/LoginForm"
 
 function Login() {
+  const handleLogin = (credentials) => {
+  
+    
+    console.log('Login:', credentials)
+    // Aquí irá la lógica de login más adelante
+  }
+
   return (
-    <div>
-      <h1>Login</h1>
-    </div>
+    <LoginForm onSubmit={handleLogin} isLoading={false} />
   )
 }
 

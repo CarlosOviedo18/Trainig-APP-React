@@ -1,0 +1,217 @@
+// LoginForm Styles - Minimalista y Cool
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.login-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.login-subtitle {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-form__field {
+  position: relative;
+
+  .MuiTextField-root {
+    width: 100%;
+  }
+
+  .MuiOutlinedInput-root {
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+
+    &:hover {
+      background: rgba(102, 126, 234, 0.08);
+    }
+
+    &.Mui-focused {
+      background: rgba(102, 126, 234, 0.1);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+
+      fieldset {
+        border-color: #667eea;
+        border-width: 2px;
+      }
+    }
+  }
+
+  .MuiOutlinedInput-input {
+    padding: 12px 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    &::placeholder {
+      opacity: 0.7;
+    }
+  }
+
+  .MuiInputBase-input:autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgba(102, 126, 234, 0.05) inset !important;
+    -webkit-text-fill-color: #333 !important;
+  }
+}
+
+.login-form__icon {
+  color: #000000;
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+.login-form__button {
+  background: linear-gradient(135deg, #dddddd 0%, #3e72e2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background: linear-gradient(135deg, #ccc 0%, #999 100%);
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.login-footer {
+  text-align: center;
+}
+
+.login-footer__text {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+}
+
+.login-footer__link {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+}
+
+// Error messages
+.MuiFormHelperText-root {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  color: #e53935 !important;
+  font-weight: 500;
+}
+
+.MuiOutlinedInput-root.Mui-error {
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #e53935;
+  }
+
+  &:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #e53935;
+  }
+
+  &.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #e53935;
+    border-width: 2px;
+  }
+}

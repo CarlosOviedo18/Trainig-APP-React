@@ -1,11 +1,13 @@
-import React from 'react'
+import RegisterForm from '../components/RegisterForm'
 
 function Register() {
-  return (
-    <div>
-      <h1>Register</h1>
-    </div>
-  )
+  const handleRegister = (formData) => {
+    // Por ahora solo mostramos los datos en consola
+    console.log('Register:', formData)
+    // Aquí irá la lógica de registro más adelante
+  }
+
+  return <RegisterForm onSubmit={handleRegister} isLoading={false} />
 }
 
 export default Register

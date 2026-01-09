@@ -1,21 +1,43 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   TextField,
   Button,
   Box
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
+import SaveIcon from '@mui/icons-material/Save'
 import '../../scss/layout/_FormExercise.scss'
 
-function FormExercise({ onSubmit = () => {}, isLoading = false, title = 'Agregar Ejercicio' }) {
+function FormExercise({ 
+  onSubmit = () => {}, 
+  isLoading = false, 
+  title = 'Agregar Ejercicio',
+  initialData = null,
+  onCancel = null
+}) {
   const [form, setForm] = useState({
     name: '',
     description: '',
+    duration: '',
     series: '',
     reps: '',
     weight: ''
   })
+
+  // Cargar datos iniciales si se proporcionan (modo edición)
+  useEffect(() => {
+    if (initialData) {
+      setForm({
+        name: initialData.name || '',
+        description: initialData.description || '',
+        duration: initialData.duration || '',
+        series: initialData.series || '',
+        reps: initialData.reps || '',
+        weight: initialData.weight || ''
+      })
+    }
+  }, [initialData])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -34,15 +56,35 @@ function FormExercise({ onSubmit = () => {}, isLoading = false, title = 'Agregar
     // Pasar los datos al backend mediante la función onSubmit
     onSubmit(form)
 
+    // Limpiar formulario solo si no estamos editando
+    if (!initialData) {
+      setForm({
+        name: '',
+        description: '',
+        duration: '',
+        series: '',
+        reps: '',
+        weight: ''
+      })
+    }
+  }
+
+  const handleCancel = () => {
     // Limpiar formulario
     setForm({
       name: '',
       description: '',
+      duration: '',
       series: '',
       reps: '',
       weight: ''
     })
+    if (onCancel) {
+      onCancel()
+    }
   }
+
+  const isEditMode = !!initialData
 
   return (
     <div className="form-exercise">
@@ -73,6 +115,18 @@ function FormExercise({ onSubmit = () => {}, isLoading = false, title = 'Agregar
           fullWidth
           multiline
           rows={3}
+          disabled={isLoading}
+        />
+      </Box>
+<Box className="form-exercise__field">
+        <TextField
+          label="Duración (minutos)"
+          name="duration"
+          type="number"
+          value={form.duration}
+          onChange={handleChange}
+          variant="outlined"
+          fullWidth
           disabled={isLoading}
         />
       </Box>
@@ -120,17 +174,29 @@ function FormExercise({ onSubmit = () => {}, isLoading = false, title = 'Agregar
       </Box>
 
       {/* Botón Submit */}
-      <Box className="form-exercise__buttons">
+      <Box className="form-exercise__buttons" sx={{ display: 'flex', gap: 2 }}>
         <Button
           variant="contained"
-          color="success"
-          startIcon={<AddIcon />}
+          color={isEditMode ? 'primary' : 'success'}
+          startIcon={isEditMode ? <SaveIcon /> : <AddIcon />}
           onClick={handleSubmit}
           className="form-exercise__button"
           disabled={isLoading}
+          sx={{ flex: 1 }}
         >
-          {isLoading ? 'Enviando...' : 'Enviar'}
+          {isLoading ? 'Procesando...' : (isEditMode ? 'Guardar Cambios' : 'Agregar Entrenamiento')}
         </Button>
+        {isEditMode && (
+          <Button
+            variant="outlined"
+            color="inherit"
+            onClick={handleCancel}
+            disabled={isLoading}
+            sx={{ flex: 1 }}
+          >
+            Cancelar
+          </Button>
+        )}
       </Box>
     </div>
   )
